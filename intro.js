@@ -1348,7 +1348,38 @@
           nextTooltipButton.className = this._options.buttonClass + ' introjs-nextbutton introjs-disabled';
         }
       }
-    } else {
+    } else if (this._introItems.length === 1) {
+      if (typeof skipTooltipButton !== "undefined" && skipTooltipButton !== null) {
+        skipTooltipButton.innerHTML = this._options.doneLabel;
+        // adding donebutton class in addition to skipbutton
+        _addClass(skipTooltipButton, 'introjs-donebutton');
+      }
+
+      if (this._options.hideNext === true) {
+        if (typeof nextTooltipButton !== "undefined" && nextTooltipButton !== null) {
+          nextTooltipButton.className = this._options.buttonClass + ' introjs-nextbutton introjs-hidden';
+        }
+        // not sure what fullbutton does
+        if (typeof prevTooltipButton !== "undefined" && prevTooltipButton !== null) {
+          _addClass(prevTooltipButton, 'introjs-fullbutton');
+        }
+      } else {
+        if (typeof nextTooltipButton !== "undefined" && nextTooltipButton !== null) {
+          nextTooltipButton.className = this._options.buttonClass + ' introjs-nextbutton introjs-disabled';
+        }
+      }
+      if (this._options.hidePrev === true) {
+        if (typeof prevTooltipButton !== "undefined" && prevTooltipButton !== null) {
+          prevTooltipButton.className = this._options.buttonClass + ' introjs-prevbutton introjs-hidden';
+        }
+        if (typeof nextTooltipButton !== "undefined" && nextTooltipButton !== null) {
+          _addClass(nextTooltipButton, 'introjs-fullbutton');
+        }
+      } else {
+        if (typeof prevTooltipButton !== "undefined" && prevTooltipButton !== null) {
+          prevTooltipButton.className = this._options.buttonClass + ' introjs-prevbutton introjs-disabled';
+        }
+      } else {
       // steps between start and end
       if (typeof skipTooltipButton !== "undefined" && skipTooltipButton !== null) {
         skipTooltipButton.className = this._options.buttonClass + ' introjs-skipbutton';
